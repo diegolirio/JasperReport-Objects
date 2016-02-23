@@ -31,7 +31,7 @@ public class HomeController {
 		p2.setName("João");
 		p2.setRg("5151512531");
 		list.add(p2);
-		report.generateReport(list);
+		report.generateReport2(list);
 		return "home";
 	}
 	
