@@ -2,13 +2,17 @@
 <%@ page session="false" %>
 <html>
 <head>
-	<title>Home</title>
+	<title>JasperReport send objects</title>
 </head>
 <body>
 <h1>
-	Hello world!  
+	JasperReport send objects
 </h1>
 
-<P>  The time on the server is ${serverTime}. </P>
+	<a href="${pageContext.request.contextPath}/imprimir_pessoas" target="_blank">Imprimir pessoas</a>
+	<br/>
+	<br/>
+	<a href="${pageContext.request.contextPath}/imprimir_nota" target="_blank">Imprimir Nota</a>
+
 </body>
 </html>

@@ -11,6 +11,7 @@ import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import net.sf.jasperreports.view.JasperViewer;
 
+import com.diegolirio.report.models.NotaFiscal;
 import com.diegolirio.report.models.People;
 
 public final class Report {
@@ -23,16 +24,47 @@ public final class Report {
 		JasperPrint jp = JasperFillManager.fillReport(arquivo, null, new JRBeanCollectionDataSource(list));
 		JasperViewer.viewReport(jp, false);
 	}
+
+	/**
+	 * Save file PDF
+	 * @param peoples
+	 * @throws JRException
+	 */
+//	public void generateReportPeoples(List<People> peoples) throws JRException {
+//		String path = this.getClass().getClassLoader().getResource("").getPath();
+//		String pathToReportPackage = path + "report/";
+//		System.out.println(pathToReportPackage);
+//		
+//		JasperReport report = JasperCompileManager.compileReport(pathToReportPackage + "report_people.jrxml");
+//		JasperPrint print = JasperFillManager.fillReport(report, null, new JRBeanCollectionDataSource(peoples));
+//		 
+//		JasperExportManager.exportReportToPdfFile(print, pathToReportPackage+"/Relatorio_.pdf");			
+//	}
+
 	
-	public void generateReport2(List<People> peoples) throws JRException {
+	/**
+	 * gera relatorio array de byte
+	 * @param peoples
+	 * @return
+	 * @throws JRException
+	 */
+	public byte[] generateReportPeoples(List<People> peoples) throws JRException {
 		String path = this.getClass().getClassLoader().getResource("").getPath();
 		String pathToReportPackage = path + "report/";
 		System.out.println(pathToReportPackage);
-		
 		JasperReport report = JasperCompileManager.compileReport(pathToReportPackage + "report_people.jrxml");
 		JasperPrint print = JasperFillManager.fillReport(report, null, new JRBeanCollectionDataSource(peoples));
-		 
-		JasperExportManager.exportReportToPdfFile(print, pathToReportPackage+"/Relatorio_.pdf");			
+		return JasperExportManager.exportReportToPdf(print);			
+	}
+
+	
+	public byte[] generateReportNF(NotaFiscal notaFiscal) throws JRException {
+		String path = this.getClass().getClassLoader().getResource("").getPath();
+		String pathToReportPackage = path + "report/";
+		System.out.println(pathToReportPackage);
+		JasperReport report = JasperCompileManager.compileReport(pathToReportPackage + "report_nota.jrxml");
+		JasperPrint print = JasperFillManager.fillReport(report, null, new JRBeanCollectionDataSource(notaFiscal.getNotaProdutos()));
+		return JasperExportManager.exportReportToPdf(print);
 	}
 	
 }
