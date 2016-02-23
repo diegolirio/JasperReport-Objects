@@ -6,6 +6,7 @@ public class People {
 	private String name;
 	private String cpfCnpj;
 	private String rg;
+	private Endereco endereco;
 	
 	public long getId() {
 		return id;
@@ -30,6 +31,13 @@ public class People {
 	}
 	public void setRg(String rg) {
 		this.rg = rg;
+	}
+
+	public Endereco getEndereco() {
+		return endereco;
+	}
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
 	}
 	@Override
 	public String toString() {

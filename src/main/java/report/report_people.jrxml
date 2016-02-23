@@ -10,13 +10,18 @@
 	<field name="name" class="java.lang.String"/>
 	<field name="cpfCnpj" class="java.lang.String"/>
 	<field name="rg" class="java.lang.String"/>
+	<field name="endereco.logradouro" class="java.lang.String"/>
+	<field name="endereco.numero" class="java.lang.String"/>
+	<field name="endereco.bairro" class="java.lang.String"/>
+	<field name="endereco.cidade" class="java.lang.String"/>
+	<field name="endereco.estado" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
 		<band height="79" splitType="Stretch">
 			<staticText>
-				<reportElement x="164" y="13" width="217" height="50" uuid="fa98e2e9-4bc6-45e0-a557-c1917b6576de"/>
+				<reportElement x="138" y="13" width="278" height="50" forecolor="#FF3333" uuid="fa98e2e9-4bc6-45e0-a557-c1917b6576de"/>
 				<textElement textAlignment="Center">
 					<font size="36"/>
 				</textElement>
@@ -28,42 +33,58 @@
 		<band height="35" splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
-		<band height="61" splitType="Stretch">
+		<band height="22" splitType="Stretch">
 			<staticText>
-				<reportElement x="0" y="0" width="138" height="20" uuid="ab221398-4965-4c15-a5dd-01df84c66fd1"/>
+				<reportElement x="0" y="0" width="50" height="20" uuid="ab221398-4965-4c15-a5dd-01df84c66fd1"/>
 				<text><![CDATA[id]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="138" y="0" width="138" height="20" uuid="127c1c92-0c36-438b-ab12-6570f3758ae9"/>
+				<reportElement x="50" y="0" width="128" height="20" uuid="127c1c92-0c36-438b-ab12-6570f3758ae9"/>
 				<text><![CDATA[name]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="276" y="0" width="138" height="20" uuid="f59191c3-dbe7-4d24-ae25-2e3a95d14a69"/>
+				<reportElement x="178" y="0" width="75" height="20" uuid="f59191c3-dbe7-4d24-ae25-2e3a95d14a69"/>
 				<text><![CDATA[cpfCnpj]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="414" y="0" width="138" height="20" uuid="c20def43-d813-47b0-b341-d7762c15fef0"/>
+				<reportElement x="264" y="0" width="62" height="20" uuid="c20def43-d813-47b0-b341-d7762c15fef0"/>
 				<text><![CDATA[rg]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="326" y="0" width="146" height="20" uuid="7af2288c-716f-4059-b874-1031476dc2f9"/>
+				<text><![CDATA[Endereco]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="125" splitType="Stretch">
+		<band height="23" splitType="Stretch">
 			<textField>
-				<reportElement x="0" y="0" width="138" height="20" uuid="7709ee43-454f-4c72-b4fc-6442adf3a1d2"/>
+				<reportElement x="0" y="0" width="50" height="20" uuid="7709ee43-454f-4c72-b4fc-6442adf3a1d2"/>
 				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="138" y="0" width="138" height="20" uuid="3c849cd9-c96c-4fab-850b-5ddc7c5bf9d2"/>
+				<reportElement x="50" y="0" width="128" height="20" uuid="3c849cd9-c96c-4fab-850b-5ddc7c5bf9d2"/>
 				<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="276" y="0" width="138" height="20" uuid="a06e5102-63aa-41d0-8b9a-c623b2a60a96"/>
+				<reportElement x="264" y="0" width="62" height="20" uuid="e80e1799-ed74-41fc-bbf8-c0c6f15501b5"/>
+				<textFieldExpression><![CDATA[$F{rg}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="178" y="0" width="86" height="20" uuid="a06e5102-63aa-41d0-8b9a-c623b2a60a96"/>
 				<textFieldExpression><![CDATA[$F{cpfCnpj}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="414" y="0" width="138" height="20" uuid="e80e1799-ed74-41fc-bbf8-c0c6f15501b5"/>
-				<textFieldExpression><![CDATA[$F{rg}]]></textFieldExpression>
+				<reportElement x="326" y="0" width="229" height="20" uuid="09be42ab-723f-4a60-a890-eb18277867ab"/>
+				<textFieldExpression><![CDATA[$F{endereco.logradouro}
+   .concat( ", " )
+   .concat( $F{endereco.numero} )
+   .concat( " - " )
+   .concat( $F{endereco.bairro} )
+   .concat( " - " )
+   .concat( $F{endereco.cidade} )
+   .concat( " - " )
+   .concat( $F{endereco.estado} )]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
